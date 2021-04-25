@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Новый пользователь</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<header th:insert="blocks/header::header"></header>
+
+<div class="container mt-5 mb-5 px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+    <h1>Создание нового пользователя</h1>
+    <div th:each="el: ${user}" >
+        <form action="http://localhost:8080/user-save" method="post">
+            <input type="hidden" th:value="${el.id}" name="id"  class="form-control"><br>
+            <h3>Имя</h3>
+            <input type="text" th:value="${el.firstName}" name="firstName" placeholder="Введите Ваше имя" class="form-control"><br>
+            <h3>Фамилия</h3>
+            <input type="text" th:value="${el.lastName}" name="lastName" placeholder="Введите Вашу Фамилию" class="form-control"><br>
+            <h3>Телефон</h3>
+            <input type="text" th:value="${el.phone}" name="phone" placeholder="Введите Ваш телефон" class="form-control"><br>
+            <h3>E-mail</h3>
+            <input type="text" th:value="${el.email}" name="email" placeholder="Введите Ваш e-mail" class="form-control"><br>
+
+
+            <h3>Тема</h3>
+
+<!--            <select th:field="*{theme.id}" class="mb-3 form-control" >-->
+<!--                <option th:each="theme: ${themes}" th:value="${theme.id}" th:text="'#'+${airplane.id}+${airplane.brand}+' '+ ${airplane.model} +' '+ '('+${airplane.passengerCapacity}+ passengers+')'+' '+ ${airplane.boardNumber} "></option>-->
+<!--            </select>-->
+
+            <select th:value="${el.theme}" name="theme"  class="mb-4 form-control" >
+                <option selected="">Выберите тему</option>
+                <option value="Крошки" >Крошки</option>
+                <option value="Под" >Под</option>
+                <option value="Столом" >Столом</option>
+            </select>
+
+<!--            <input type="text" th:value="${el.theme}" name="theme" placeholder="Выберите тему" class="form-control"><br>-->
+
+            <h3>Комментарий</h3>
+            <input type="text" th:value="${el.wish}" name="wish" placeholder="Введите Ваш комментарий" class="form-control"><br>
+
+            <button  type="submit" class="btn btn-success pb-md-4">Сохранить</button>
+        </form>
+
+    </div>
+</div>
+
+<div th:insert="blocks/footer::footer"></div>
+</body>
+</html>
