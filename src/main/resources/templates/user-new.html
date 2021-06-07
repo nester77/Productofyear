@@ -10,7 +10,7 @@
 <header th:insert="blocks/header::header"></header>
 
 <div class="container mt-5 mb-5 px-3 py-3 pt-md-5 pb-md-4 mx-auto">
-    <h1>Создание нового пользователя</h1>
+    <h1>Форма обратной связи</h1>
     <div th:each="el: ${user}" >
         <form action="http://localhost:8080/user-save" method="post">
             <input type="hidden" th:value="${el.id}" name="id"  class="form-control"><br>
@@ -32,9 +32,10 @@
 
             <select th:value="${el.theme}" name="theme"  class="mb-4 form-control" >
                 <option selected="">Выберите тему</option>
-                <option value="Крошки" >Крошки</option>
-                <option value="Под" >Под</option>
-                <option value="Столом" >Столом</option>
+                <option value="Продукт года" >Продукт года</option>
+                <option value="Сотрудничество" >Сотрудничество</option>
+                <option value="Вакансия" >Вакансия</option>
+                <option value="Другое" >Другое</option>
             </select>
 
 <!--            <input type="text" th:value="${el.theme}" name="theme" placeholder="Выберите тему" class="form-control"><br>-->
